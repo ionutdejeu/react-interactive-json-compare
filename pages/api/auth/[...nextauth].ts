@@ -19,6 +19,7 @@ export const authOptions: NextAuthOptions = {
       name: "Credentials",
       credentials: {},
       type: "credentials",
+      
       authorize(credentials, req) {
         console.log(credentials);
         return {
