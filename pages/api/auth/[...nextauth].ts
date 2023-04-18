@@ -11,6 +11,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+  secret: "LlKq6ZtYbr+hTC073mAmAh9/h2HwMfsFo4hrfCx5mLg=",
   // Configure one or more authentication providers
   providers: [
     // ...add more providers here
