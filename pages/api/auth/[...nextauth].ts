@@ -11,6 +11,9 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+  session:{
+    strategy:"jwt"
+  },
   secret: "LlKq6ZtYbr+hTC073mAmAh9/h2HwMfsFo4hrfCx5mLg=",
   // Configure one or more authentication providers
   providers: [
@@ -19,7 +22,7 @@ export const authOptions: NextAuthOptions = {
       name: "Credentials",
       credentials: {},
       type: "credentials",
-      
+
       authorize(credentials, req) {
         console.log(credentials);
         return {

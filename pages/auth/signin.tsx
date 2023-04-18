@@ -1,3 +1,4 @@
+'use client';
 import Head from "next/head";
 import Layout from "../../layout/Layout";
 import Link from "next/link";
