@@ -5,8 +5,6 @@ import debounce from 'lodash/debounce';
 import { Differ, Viewer, ViewerProps } from '../json-diff';
 import type { DifferOptions, InlineDiffOptions } from '../json-diff';
 
-import GeneratedCode from './generated-code';
-import jsStringify from './js-stringify';
 import Label from './label';
 import { updateInitialValues, useInitialValues } from './initial-values';
 
@@ -95,19 +93,7 @@ const Playground: React.FC<PlaygroundProps> = props => {
     hideUnchangedLines,
     virtualOptions,
   ]);
-
-  const code = `
-const d = new Differ(${jsStringify(differOptions)});
-const diff = d.diff(before, after);
-
-const viewerProps = ${jsStringify(viewerOptions)};
-return (
-  <Viewer
-    diff={diff}
-    {...viewerProps}
-  />
-);
-`.trim();
+ 
 
   // inputs
   const { l, r } = useInitialValues();
@@ -146,8 +132,7 @@ return (
   return (
     <div className="playground">
       <div className="layout-left">
-        <div className="logo">JSON Diff Kit</div>
-        <div className="back" onClick={props.onSwitch}>Go to docs & demo</div>
+        <div className="logo">JSON Diff app</div>
         <div className="config">
           <form>
             <legend>DIFFER CONFIGURATION</legend>
@@ -361,23 +346,6 @@ return (
               />
             </label>
           </form>
-        </div>
-        <div className="config">
-          <form>
-            <legend>GENERATEDE CODE</legend>
-            <GeneratedCode code={code} />
-          </form>
-        </div>
-        <div className="statistics">
-          <img src="https://img.shields.io/npm/v/json-diff-kit.svg?style=flat" style={{ marginRight: 8 }} />
-          <iframe
-            src="https://ghbtns.com/github-btn.html?user=rexskz&repo=json-diff-kit&type=star&count=true"
-            frameBorder="0"
-            scrolling="0"
-            width="90"
-            height="20"
-            title="GitHub"
-          />
         </div>
       </div>
       <div className={`layout-right${fullscreen ? ' layout-right-fullscreen' : ''}`}>
